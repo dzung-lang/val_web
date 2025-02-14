@@ -77,9 +77,10 @@
 // }
 
 // export default PhotoSlideshowWithAudio;
+
+
+
 // src/PhotoSlideshowWithAudio.jsx
-
-
 // import React, { useState, useEffect, useRef } from "react";
 
 // function PhotoSlideshowWithAudio() {
@@ -161,14 +162,12 @@
 
 
 
-// // src/PhotoSlideshowWithAudio.jsx
+// src/PhotoSlideshowWithAudio.jsx
 import React, { useState, useEffect, useRef } from "react";
-// 1) Import Framer Motion
 import { motion } from "framer-motion";
 
 function PhotoSlideshowWithAudio() {
   // Each "page" has an image & caption.
-  // Make sure you have these files in `public/photos/`.
   const pages = [
     {
       image: "photos/pic1.jpg",
@@ -188,24 +187,24 @@ function PhotoSlideshowWithAudio() {
   const [audioDuration, setAudioDuration] = useState(null);
   const audioRef = useRef(null);
 
-  // Get audio duration once metadata loads
+  // When audio metadata loads, store its duration
   const handleLoadedMetadata = (e) => {
     setAudioDuration(e.target.duration);
   };
 
-  // Auto-play audio when component mounts
+  // Auto-play the audio on mount
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.play();
     }
   }, []);
 
-  // Time per page = (song duration in ms) / number of pages
+  // Calculate display time per page
   const pageInterval = audioDuration
     ? (audioDuration * 1000) / pages.length
     : 3000; // fallback 3s if audio not ready
 
-  // Advance pages automatically
+  // Advance to next page after pageInterval
   useEffect(() => {
     if (audioDuration !== null && currentIndex < pages.length) {
       const timer = setTimeout(() => {
@@ -215,12 +214,17 @@ function PhotoSlideshowWithAudio() {
     }
   }, [currentIndex, audioDuration, pageInterval, pages.length]);
 
-  // Determine if we're still showing a page or the final message
   const showPage = currentIndex < pages.length;
 
   return (
-    <div style={styles.bookContainer}>
-      {/* Audio element in `public/musics/` */}
+    // Open-book animation: the container rotates on the Y-axis from 90° to 0°
+    <motion.div
+      style={styles.bookContainer}
+      initial={{ rotateY: 90, opacity: 0 }}
+      animate={{ rotateY: 0, opacity: 1 }}
+      transition={{ duration: 1.5, ease: "easeOut" }}
+    >
+      {/* Audio element from public/musics */}
       <audio
         ref={audioRef}
         src="musics/mot_doi.mp3"
@@ -229,25 +233,24 @@ function PhotoSlideshowWithAudio() {
 
       {showPage ? (
         <div style={styles.page}>
-          {/* Image (no animation here, but you could add one if you like) */}
           <img
             src={pages[currentIndex].image}
             alt={`Slide ${currentIndex + 1}`}
             style={styles.pageImage}
           />
-
-          {/* 2) Animate the caption using Framer Motion */}
+          {/* Caption with fade-in animation */}
           <motion.p
-            key={currentIndex} // ensures a fresh animation each page
+            key={currentIndex} // re-run animation on page change
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }} // 1-second fade-in
+            transition={{ duration: 1 }}
             style={styles.caption}
           >
             {pages[currentIndex].caption}
           </motion.p>
         </div>
       ) : (
+        // Final sweet message after the last page
         <div style={styles.finalMessage}>
           <h2>My Sweet Message for You</h2>
           <p>
@@ -256,11 +259,10 @@ function PhotoSlideshowWithAudio() {
           </p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 
-// Basic "book-like" styling
 const styles = {
   bookContainer: {
     width: "600px",
@@ -268,11 +270,12 @@ const styles = {
     minHeight: "400px",
     margin: "2rem auto",
     padding: "2rem",
-    backgroundColor: "#fdf8f3", // light paper color
+    backgroundColor: "#fdf8f3", // light paper-like color
     borderRadius: "12px",
     boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
     textAlign: "center",
     fontFamily: "Georgia, serif",
+    perspective: "1000px", // for a realistic 3D effect
   },
   page: {
     display: "flex",
@@ -300,3 +303,6 @@ const styles = {
 };
 
 export default PhotoSlideshowWithAudio;
+
+
+
