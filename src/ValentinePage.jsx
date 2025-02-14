@@ -109,7 +109,7 @@ function ValentinePage() {
       </button>
       {showSchedule && (
         <img
-          src="/valentine_schedule.png"
+          src="val_web/public/valentine_schedule.png"
           alt="Valentine Schedule"
           style={{
             marginTop: "1rem",
