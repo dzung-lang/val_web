@@ -1,39 +1,36 @@
 // src/PhotoSlideshowWithAudio.jsx
 import React, { useState, useEffect, useRef } from "react";
-import pic1 from "../assets/pic1.jpg";
-import pic2 from "../assets/pic2.jpg";
-import pic3 from "../assets/pic3.jpg";
-import motDoi from "../assets/mot_doi.mp3";
-function PhotoSlideshowWithAudio() {
-  // List of image URLs (adjust the list as needed)
-  const images = [pic1, pic2, pic3];
 
-  // State to keep track of the current slide
+function PhotoSlideshowWithAudio() {
+  // Point to images in the public folder, including your repo subfolder.
+  const images = [
+    "/val_web/photos/pic1.jpg",
+    "/val_web/photos/pic2.jpg",
+    "/val_web/photos/pic3.jpg",
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
-  // State to hold the song's duration (in seconds)
   const [audioDuration, setAudioDuration] = useState(null);
-  // Reference to the audio element
   const audioRef = useRef(null);
 
-  // When the audio metadata is loaded, get its duration
+  // Get audio duration when metadata loads
   const handleLoadedMetadata = (e) => {
     setAudioDuration(e.target.duration);
   };
 
-  // Automatically play the audio when the component mounts
+  // Auto-play audio on mount
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.play();
     }
   }, []);
 
-  // Compute how long each slide should be displayed:
-  // slideInterval (in ms) = (total song duration in ms) / (number of images)
+  // Each slide’s display time = total song duration / number of images
   const slideInterval = audioDuration
     ? (audioDuration * 1000) / images.length
-    : 3000; // Fallback to 3 seconds if audio duration isn't ready
+    : 3000; // fallback to 3s if audio not ready
 
-  // Advance to the next slide after the computed interval
+  // Advance to the next slide after 'slideInterval'
   useEffect(() => {
     if (audioDuration !== null && currentIndex < images.length) {
       const timer = setTimeout(() => {
@@ -45,14 +42,14 @@ function PhotoSlideshowWithAudio() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "1rem" }}>
-      {/* Audio element to play the song */}
+      {/* Audio element references the file in public/musics/ */}
       <audio
         ref={audioRef}
-        src="musics/mot_doi.mp3"
+        src="/val_web/musics/mot_doi.mp3"
         onLoadedMetadata={handleLoadedMetadata}
       />
-      
-      {/* Display the current slide if still within the images array */}
+
+      {/* Show current image until we reach the end */}
       {currentIndex < images.length ? (
         <img
           src={images[currentIndex]}
@@ -66,7 +63,7 @@ function PhotoSlideshowWithAudio() {
           }}
         />
       ) : (
-        // After all slides, display a final sweet message
+        // After the last slide, show your sweet message
         <div style={{ marginTop: "2rem", color: "red" }}>
           <h2>My Sweet Message for You</h2>
           <p>
