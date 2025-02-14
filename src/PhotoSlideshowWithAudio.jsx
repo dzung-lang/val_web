@@ -1,14 +1,12 @@
 // src/PhotoSlideshowWithAudio.jsx
 import React, { useState, useEffect, useRef } from "react";
-
+import pic1 from "../assets/pic1.jpg";
+import pic2 from "../assets/pic2.jpg";
+import pic3 from "../assets/pic3.jpg";
+import motDoi from "../assets/mot_doi.mp3";
 function PhotoSlideshowWithAudio() {
   // List of image URLs (adjust the list as needed)
-  const images = [
-    "photos/pic1.jpg",
-    "photos/pic2.jpg",
-    "photos/pic3.jpg",
-    // Add more images here...
-  ];
+  const images = [pic1, pic2, pic3];
 
   // State to keep track of the current slide
   const [currentIndex, setCurrentIndex] = useState(0);
