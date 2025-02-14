@@ -4,9 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 function PhotoSlideshowWithAudio() {
   // List of image URLs (adjust the list as needed)
   const images = [
-    "public/photos/pic1.jpg",
-    "public/photos/pic2.jpg",
-    "public/photos/pic3.jpg",
+    "photos/pic1.jpg",
+    "photos/pic2.jpg",
+    "photos/pic3.jpg",
     // Add more images here...
   ];
 
