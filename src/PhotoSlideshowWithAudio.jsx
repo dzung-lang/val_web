@@ -4,9 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 function PhotoSlideshowWithAudio() {
   // List of image URLs (adjust the list as needed)
   const images = [
-    "photos/pic1.jpg",
-    "photos/pic2.jpg",
-    "photos/pic3.jpg",
+    "/photos/pic1.jpg",
+    "/photos/pic2.jpg",
+    "/photos/pic3.jpg",
     // Add more images here...
   ];
 
@@ -50,7 +50,7 @@ function PhotoSlideshowWithAudio() {
       {/* Audio element to play the song */}
       <audio
         ref={audioRef}
-        src="musics/mot_doi.mp3"
+        src="/musics/mot_doi.mp3"
         onLoadedMetadata={handleLoadedMetadata}
       />
       
