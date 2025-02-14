@@ -1,10 +1,13 @@
+// src/ValentinePage.jsx
 import React, { useState } from "react";
-import PhotoSlideshow from "./PhotoSlideshow";
+// import PhotoSlideshow from "./PhotoSlideshow"; // Your previous slideshow (if needed)
+import PhotoSlideshowWithAudio from "./PhotoSlideshowWithAudio";
 
 function ValentinePage() {
   const [message, setMessage] = useState("");
   const [showSlideshow, setShowSlideshow] = useState(false);
   const [showSchedule, setShowSchedule] = useState(false);
+  const [showAudioSlideshow, setShowAudioSlideshow] = useState(false);
 
   const loveMessages = [
     "You make my heart skip a beat! ❤️",
@@ -25,6 +28,10 @@ function ValentinePage() {
 
   const toggleSchedule = () => {
     setShowSchedule((prev) => !prev);
+  };
+
+  const toggleAudioSlideshow = () => {
+    setShowAudioSlideshow((prev) => !prev);
   };
 
   return (
@@ -66,7 +73,7 @@ function ValentinePage() {
         </p>
       )}
 
-      {/* Photo Slideshow Section */}
+      {/* Photo Slideshow Section
       <button
         onClick={toggleSlideshow}
         style={{
@@ -82,7 +89,7 @@ function ValentinePage() {
       >
         {showSlideshow ? "Hide Photo Slideshow" : "Show Photo Slideshow"}
       </button>
-      {showSlideshow && <PhotoSlideshow />}
+      {showSlideshow && <PhotoSlideshow />} */}
 
       {/* Schedule Section */}
       <button
@@ -113,6 +120,26 @@ function ValentinePage() {
           }}
         />
       )}
+
+      {/* Photo Slideshow with Audio Section */}
+      <button
+        onClick={toggleAudioSlideshow}
+        style={{
+          marginTop: "2rem",
+          padding: "0.5rem 1rem",
+          fontSize: "1rem",
+          backgroundColor: "#ff6b6b",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        {showAudioSlideshow
+          ? "Hide Slideshow with Song"
+          : "Show Slideshow with Song"}
+      </button>
+      {showAudioSlideshow && <PhotoSlideshowWithAudio />}
     </div>
   );
 }
