@@ -50,7 +50,7 @@ function PhotoSlideshowWithAudio() {
       {/* Audio element to play the song */}
       <audio
         ref={audioRef}
-        src="/song.mp3"
+        src="musics/mot_doi.mp3"
         onLoadedMetadata={handleLoadedMetadata}
       />
       
