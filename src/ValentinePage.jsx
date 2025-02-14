@@ -114,6 +114,7 @@ function ValentinePage() {
           style={{
             marginTop: "1rem",
             width: "400px",
+            maxWidth: "90%",
             height: "auto",
             border: "2px solid #fff",
             borderRadius: "8px",
