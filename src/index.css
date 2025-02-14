@@ -1,0 +1,17 @@
+/* Remove default margin/padding from the page */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Make the entire page a pink gradient */
+body {
+  background: linear-gradient(135deg, #ffc0cb, #ff99cc);
+  /* fallback color if gradient doesn't load */
+  background-color: #ffc0cb;
+  /* fill the viewport */
+  min-height: 100vh;
+  /* optional: set a default font */
+  font-family: sans-serif;
+}
