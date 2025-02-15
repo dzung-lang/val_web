@@ -170,17 +170,71 @@ function PhotoSlideshowWithAudio() {
   // Each "page" has an image & caption.
   const pages = [
     {
-      image: "photos/pic1.jpg",
-      caption: "Our first date – where everything began.",
+      image: "photos/hi.jpg",
+      caption: "Hi, anh làm web này hơi vội nên là ghép được xíu ảnh dô. Mong là ebe xem thấy dui",
     },
     {
-      image: "photos/pic2.jpg",
-      caption: "Laughs, adventures, and so many sweet memories.",
+      image: "photos/totinh.jpg",
+      caption: "Lúc anh tỏ tình ebe nè",
     },
     {
-      image: "photos/pic3.jpg",
-      caption: "Looking forward to every new chapter with you.",
+      image: "photos/moa.jpg",
+      caption: "Hihi, ebe đồng ý nè. Moahhhh, Moahhh",
     },
+    {
+      image: "photos/moiyeu.jpg",
+      caption: "Hồi mới yêu, hai đứa đi studydate nè",
+    },
+    {
+      image: "photos/gau.jpg",
+      caption: "Mình cũm studydate online nè, bảo học với gấu không ai tin =))))",
+    },
+    {
+      image: "photos/dichoi.jpg",
+      caption: "Tuy học nhiều nhưng mà hai đứa vẫn dành thời gian đi chơi xíu"
+    },
+    {
+      image: "photos/cute.jpg",
+      caption: "Ebe thì cute nè",
+    },
+    {
+      image: "photos/cute1.jpg",
+      caption: "Cute nữa nè. Moahhhhh",
+    },
+    {
+      image: "photos/phongcach.jpg",
+      caption: "Ebe còn phong cách, oách xà lách nuôn",
+    },
+    {
+      image: "photos/o_ananh.jpg",
+      caption: "Còn a thì không ăn ảnh nè =))))",
+    },
+    {
+      image: "photos/tylamtoc.jpg",
+      caption: "Nên là a nhờ Tý làm tóc choa a",
+    },
+    {
+      image: "photos/toctylam.jpg",
+      caption: "Hehe, tóc Tý làm trông cũm đẹp đóa chớ",
+    },
+    {
+      image: "photos/fdate2.jpg",
+      caption: "Đẹp trai oài, mình đi date hoai",
+    },
+    {
+      image: "photos/fdate.jpg",
+      caption: "Ebe đi date xinh gái chưa nè",
+    },
+    {
+      image: "photos/doi.jpg",
+      caption: "Ebe dỗi",
+    },
+    {
+      image: "photos/quansu.jpg",
+      caption: "A i quân sự được ebe lên thăm. Moahhh",
+    },
+  
+
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
